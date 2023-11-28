@@ -32,9 +32,6 @@ jobs:
       - name: Checkout self
         uses: actions/checkout@v4
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-
       - name: Set Input Variables
         run: |
           echo "pathCydigConfig=${{ env.complianceRepo }}/${{ env.configFile }}"  >> $GITHUB_ENV

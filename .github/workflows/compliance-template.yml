@@ -42,7 +42,7 @@ jobs:
       - name: Checkout compliance
         uses: actions/checkout@v4
         with:
-          repository: ${{env.complianceRepo}} #Change: Path to the repository where your compliance-template and cydigConfig.json is located.
+          repository: ${{env.pathComplianceRepo}} #Change: Path to the repository where your compliance-template and cydigConfig.json is located.
           path: compliance
 
       - name: "Azure CLI login"

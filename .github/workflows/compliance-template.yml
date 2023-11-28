@@ -16,6 +16,7 @@ env:
   configFile: cydigConfig.json
   disableWarningUsersInProd: false #Change: true/false
   updateKey: ${{ secrets.CYDIG_API_KEY }}
+  accessKeyBadgeService: ${{vars.ACCESS_KEY_BADGES_DEV }}
 
 on:
   workflow_call:
@@ -38,6 +39,7 @@ jobs:
           echo "pathComplianceRepo=${{ env.githubOrg }}/${{ env.complianceRepo }}"  >> $GITHUB_ENV
           echo "threatModelingDate=${{ inputs.threatModelingDate }}" >> $GITHUB_ENV
           echo "pentestDate=${{ inputs.pentestDate }}" >> $GITHUB_ENV
+          echo "accessKeyBadgeService=${{ vars.ACCESS_KEY_BADGES_DEV }}" >> $GITHUB_ENV
 
       - name: Checkout compliance
         uses: actions/checkout@v4
@@ -70,6 +72,7 @@ jobs:
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           cydigConfigPath: ${{ env.pathCydigConfig }}
+          accessKeyBadgeService: ${{ env.accessKeyBadgeService }}
 
       - name: "Get Upload Action results"
         run: |

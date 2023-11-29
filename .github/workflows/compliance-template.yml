@@ -17,6 +17,8 @@ env:
   disableWarningUsersInProd: false #Change: true/false
   updateKey: ${{ secrets.CYDIG_API_KEY }}
   accessKeyBadgeService: ${{secrets.ACCESS_KEY_BADGES_DEV }}
+  urlUpdate: "https://func-cydig-upload-comp-state-dev.azurewebsites.net/api"
+  urlBadgeService: "https://func-cydig-badge-service-dev.azurewebsites.net/api"
 
 on:
   workflow_call:
@@ -39,7 +41,6 @@ jobs:
           echo "pathComplianceRepo=${{ env.githubOrg }}/${{ env.complianceRepo }}"  >> $GITHUB_ENV
           echo "threatModelingDate=${{ inputs.threatModelingDate }}" >> $GITHUB_ENV
           echo "pentestDate=${{ inputs.pentestDate }}" >> $GITHUB_ENV
-          echo "accessKeyBadgeService=${{ env.accessKeyBadgeService }}" >> $GITHUB_ENV
 
       - name: Checkout compliance
         uses: actions/checkout@v4
